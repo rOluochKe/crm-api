@@ -3,11 +3,11 @@ POST http://localhost:3001/v1/user
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "company": "ABC Limited",
+  "name": "Jane Doe",
+  "company": "XYZ Limited",
   "address": "Some Address Nairobi",
-  "phone": "12300768",
-  "email": "john.doe@gmail.com",
+  "phone": "7824568942",
+  "email": "jane.doe@gmail.com",
   "password": "12345678"
 }
 
@@ -16,7 +16,7 @@ POST http://localhost:3001/v1/user/login
 Content-Type: application/json
 
 {
-  "email": "john.doe@gmail.com",
+  "email": "jane.doe@gmail.com",
   "password": "12345678"   
 }
 
@@ -45,6 +45,10 @@ Content-Type: application/json
 
 {
     "email": "john.doe@gmail.com",
-    "pin": 826531,
+    "pin": 555819,
     "newPassword": "lk3456yt"
 }
+
+#### user logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbmUuZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg3MDY3NiwiZXhwIjoxNjM3ODcxNTc2fQ.04NGiXINTzZWlV5-40nDlPQovSGcOP8TDmsHqoc0jaU
