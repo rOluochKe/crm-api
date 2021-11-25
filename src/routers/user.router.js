@@ -9,17 +9,17 @@ const { crateAccessJWT, crateRefreshJWT } = require('../helpers/jwt.helper')
 const { json } = require('body-parser')
 
 router.all('/', (req, res, next) => {
-  // res.json({ message: 'users' })
+  // res.json({ message: "return form user router" });
 
   next()
 })
 
-// Create new user
+// Create new user router
 router.post('/', async (req, res) => {
   const { name, company, address, phone, email, password } = req.body
 
   try {
-    // hash password
+    //hash password
     const hashedPass = await hashPassword(password)
 
     const newUserObj = {
@@ -30,7 +30,6 @@ router.post('/', async (req, res) => {
       email,
       password: hashedPass,
     }
-
     const result = await insertUser(newUserObj)
     // console.log(result)
 
@@ -41,9 +40,9 @@ router.post('/', async (req, res) => {
   }
 })
 
-// User sign in Route
+//User sign in Router
 router.post('/login', async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
 
   const { email, password } = req.body
 
@@ -59,13 +58,12 @@ router.post('/login', async (req, res) => {
     return res.json({ status: 'error', message: 'Invalid email or password!' })
 
   const result = await comparePassword(password, passFromDb)
-  console.log(result)
 
   if (!result) {
     return res.json({ status: 'error', message: 'Invalid email or password!' })
   }
 
-  const accessJWT = await crateAccessJWT(user.email)
+  const accessJWT = await crateAccessJWT(user.email, `${user._id}`)
   const refreshJWT = await crateRefreshJWT(user.email)
 
   res.json({
