@@ -9,7 +9,7 @@ const port = process.env.PORT || 3001
 const app = express()
 
 // api security
-app.use(helmet())
+// app.use(helmet())
 
 // handle cors error
 app.use(cors())

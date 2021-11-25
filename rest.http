@@ -1,0 +1,21 @@
+### User sing up endpoint
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "company": "ABC Limited",
+  "address": "Some Address Nairobi",
+  "phone": "12300768",
+  "email": "john.doe@gmail.com",
+  "password": "12345678"
+}
+
+### User sing in endpoint
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+  "email": "john.doe@gmail.com",
+  "password": "12345678"   
+}
