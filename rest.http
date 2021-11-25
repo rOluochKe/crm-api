@@ -30,3 +30,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdt
 ### Get refreshed token
 GET http://localhost:3001/v1/tokens
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg2MDMwOSwiZXhwIjoxNjQwNDUyMzA5fQ.vwUeGqr1EK6jtj5M0RCkBah-t04HrGdW15t6p_itV6Y
+
+#### Password reset endpoints
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
+
+{
+  "email": "john.doe@gmail.com"
+}
