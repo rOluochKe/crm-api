@@ -2,16 +2,31 @@ const express = require('express')
 const { route, post } = require('./ticket.router')
 const router = express.Router()
 
-const { insertUser, getUserByEmail } = require('../model/user/User.model')
+const {
+  insertUser,
+  getUserByEmail,
+  getUserById,
+} = require('../model/user/User.model')
 const { hashPassword, comparePassword } = require('../helpers/bcrypt.helper')
 const { crateAccessJWT, crateRefreshJWT } = require('../helpers/jwt.helper')
-
-const { json } = require('body-parser')
+const { userAuthorization } = require('../middlewares/authorization.middleware')
 
 router.all('/', (req, res, next) => {
   // res.json({ message: "return form user router" });
 
   next()
+})
+
+// Get user profile router
+router.get('/', userAuthorization, async (req, res) => {
+  //this data coming form database
+  const _id = req.userId
+
+  const userProf = await getUserById(_id)
+  //3. extract user id
+  //4. get user profile based on the user id
+
+  res.json({ user: userProf })
 })
 
 // Create new user router
@@ -31,18 +46,18 @@ router.post('/', async (req, res) => {
       password: hashedPass,
     }
     const result = await insertUser(newUserObj)
-    // console.log(result)
+    console.log(result)
 
     res.json({ message: 'New user created', result })
   } catch (error) {
-    // console.log(error)
+    console.log(error)
     res.json({ statux: 'error', message: error.message })
   }
 })
 
 //User sign in Router
 router.post('/login', async (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
 
   const { email, password } = req.body
 

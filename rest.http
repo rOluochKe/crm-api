@@ -19,3 +19,7 @@ Content-Type: application/json
   "email": "john.doe@gmail.com",
   "password": "12345678"   
 }
+
+### Get a user profile endpoint
+GET  http://localhost:3001/v1/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg1Njc2OCwiZXhwIjoxNjM3ODU3NjY4fQ.shcfcfZRmOrzd219FMPeA5NmsdaOI-WYDfJukXyEU8M
