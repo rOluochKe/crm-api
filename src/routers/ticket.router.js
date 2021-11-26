@@ -6,6 +6,7 @@ const {
   getTicketById,
   updateClientReply,
   updateStatusClose,
+  deleteTicket,
 } = require('../model/ticket/Ticket.model')
 const { userAuthorization } = require('../middlewares/authorization.middleware')
 
@@ -136,6 +137,23 @@ router.patch('/close-ticket/:_id', userAuthorization, async (req, res) => {
     res.json({
       status: 'error',
       message: 'Unable to update the ticket',
+    })
+  } catch (error) {
+    res.json({ status: 'error', message: error.message })
+  }
+})
+
+// Delete a ticket
+router.delete('/close-ticket/:_id', userAuthorization, async (req, res) => {
+  try {
+    const { _id } = req.params
+    const clientId = req.userId
+
+    const result = await deleteTicket({ _id, clientId })
+
+    return res.json({
+      status: 'success',
+      message: 'The ticket has been deleted',
     })
   } catch (error) {
     res.json({ status: 'error', message: error.message })
