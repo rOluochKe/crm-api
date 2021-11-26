@@ -6,7 +6,7 @@ const { token } = require('morgan')
 const crateAccessJWT = async (email, _id) => {
   try {
     const accessJWT = await jwt.sign({ email }, process.env.JWT_ACCESS_SECRET, {
-      expiresIn: '15m',
+      expiresIn: '1d', //change this to 15m
     })
 
     await setJWT(accessJWT, _id)
@@ -38,7 +38,6 @@ const verifyAccessJWT = (userJWT) => {
     return Promise.resolve(error)
   }
 }
-
 const verifyRefreshJWT = (userJWT) => {
   try {
     return Promise.resolve(jwt.verify(userJWT, process.env.JWT_REFRESH_SECRET))

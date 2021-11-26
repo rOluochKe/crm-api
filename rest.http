@@ -3,52 +3,57 @@ POST http://localhost:3001/v1/user
 Content-Type: application/json
 
 {
-  "name": "Jane Doe",
-  "company": "XYZ Limited",
-  "address": "Some Address Nairobi",
-  "phone": "7824568942",
-  "email": "jane.doe@gmail.com",
-  "password": "12345678"
+    "name": "Prem Acharya",
+    "company": "Company name",
+    "address": "Some address Sydney",
+    "phone": "041000000",
+    "email": "e2@e.com1",
+    "password": "secret222"
 }
-
 ### User sing in endpoint
 POST http://localhost:3001/v1/user/login
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-  "email": "jane.doe@gmail.com",
-  "password": "12345678"   
+    "email": "e2@e.com",
+     "password": "password"   
 }
 
 ### Get a user profile endpoint
 GET  http://localhost:3001/v1/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg2MDMwOSwiZXhwIjoxNjM3ODYwMzY5fQ.ZhpzOk_9t22PMY6w70fqMfn0s47Fx9roGCIKQnJVz-A
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5MDQ5NzE0LCJleHAiOjE2MDkxMzYxMTR9.F8cp1zteSP9OZq8NXeirub8C-Gg81UQMYGJK-OSDAlA
 
 
 ###Token routers
 
 ### Get refreshed token
 GET http://localhost:3001/v1/tokens
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg2MDMwOSwiZXhwIjoxNjQwNDUyMzA5fQ.vwUeGqr1EK6jtj5M0RCkBah-t04HrGdW15t6p_itV6Y
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA0OTc0MTcyLCJleHAiOjE2MDc1NjYxNzJ9.ancmfcnZW8zcy2zlRsnPE6drWfD2zTFpmbO6cwLzqq8
 
-#### Password reset endpoints
+
+#### Password reset request endpoints
 POST http://localhost:3001/v1/user/reset-password
 Content-Type: application/json 
 
 {
-  "email": "john.doe@gmail.com"
+    "email": "e2@e.com"
 }
-
 #### Update new password endpoint
 PATCH  http://localhost:3001/v1/user/reset-password
 Content-Type: application/json 
 
 {
-    "email": "john.doe@gmail.com",
-    "pin": 555819,
-    "newPassword": "lk3456yt"
+    "email": "e2@e.com",
+    "pin": "674783",
+    "newPassword": "password"
 }
 
 #### user logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphbmUuZG9lQGdtYWlsLmNvbSIsImlhdCI6MTYzNzg3MDY3NiwiZXhwIjoxNjM3ODcxNTc2fQ.04NGiXINTzZWlV5-40nDlPQovSGcOP8TDmsHqoc0jaU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5MDQ5NzE0LCJleHAiOjE2MDkxMzYxMTR9.F8cp1zteSP9OZq8NXeirub8C-Gg81UQMYGJK-OSDAlA
+ 
+
+###To Remove
+##Ticket api
+GET http://localhost:3001/v1/ticket
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA4MDA3ODIzLCJleHAiOjE2MDgwOTQyMjN9.0Umn0A9KBYMIO7tfTkXXfzk2va1JKF4w3uxyphXA_-M
