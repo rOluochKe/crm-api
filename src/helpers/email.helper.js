@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   // port: 587,
   auth: {
-    user: 'youremail@gmail.com',
-    pass: 'yourpassword',
+    user: process.env.EMAIL_ADDRESS,
+    pass: process.env.EMAIL_PASSWORD,
   },
 })
 
@@ -35,7 +35,7 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
   switch (type) {
     case 'request-new-password':
       info = {
-        from: '"CRM Limited" <youremail@gmail.com', // sender address
+        from: `"CRM Limited" ${process.env.EMAIL_ADDRESS}`, // sender address
         to: email, // list of receivers
         subject: 'Password reset Pin', // Subject line
         text:
@@ -54,7 +54,7 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
 
     case 'update-password-success':
       info = {
-        from: '"CRM Limited" <youremail@gmail.com>', // sender address
+        from: `"CRM Limited" ${process.env.EMAIL_ADDRESS}`, // sender address
         to: email, // list of receivers
         subject: 'Password updated', // Subject line
         text: 'Your new password has been update', // plain text body
@@ -68,7 +68,7 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
 
     case 'new-user-confirmation-required':
       info = {
-        from: '"CRM Limited" <youremail@gmail.com>', // sender address
+        from: `"CRM Limited" ${process.env.EMAIL_ADDRESS}`, // sender address
         to: email, // list of receivers
         subject: 'Please verify your new user', // Subject line
         text: 'Please follow the link to very your account before you can login', // plain text body

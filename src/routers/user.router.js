@@ -28,8 +28,7 @@ const { verify } = require('jsonwebtoken')
 
 const { deleteJWT } = require('../helpers/redis.helper')
 
-const verificationURL = 'http://localhost:3000/verification/'
-const loginLink = 'http://localhost:3000/'
+const verificationURL = 'https://mern-crm-api.herokuapp.com/verification/'
 
 router.all('/', (req, res, next) => {
   // res.json({ message: "return form user router" });
