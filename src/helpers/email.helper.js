@@ -1,11 +1,12 @@
 const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
+  // host: 'smtp.gmail.com',
+  service: 'gmail',
+  // port: 587,
   auth: {
-    user: 'francesca.heathcote91@ethereal.email',
-    pass: 'RuW5ncA11xasbc79zz',
+    user: 'youremail@gmail.com',
+    pass: 'yourpassword',
   },
 })
 
@@ -34,9 +35,9 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
   switch (type) {
     case 'request-new-password':
       info = {
-        from: '"CRM Limited" <francesca.heathcote91@ethereal.email>', // sender address
+        from: '"CRM Limited" <youremail@gmail.com', // sender address
         to: email, // list of receivers
-        subject: 'Password rest Pin', // Subject line
+        subject: 'Password reset Pin', // Subject line
         text:
           'Here is your password rest pin' +
           pin +
@@ -53,7 +54,7 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
 
     case 'update-password-success':
       info = {
-        from: '"CRM Limited" <francesca.heathcote91@ethereal.email>', // sender address
+        from: '"CRM Limited" <youremail@gmail.com>', // sender address
         to: email, // list of receivers
         subject: 'Password updated', // Subject line
         text: 'Your new password has been update', // plain text body
@@ -67,7 +68,7 @@ const emailProcessor = ({ email, pin, type, verificationLink = '' }) => {
 
     case 'new-user-confirmation-required':
       info = {
-        from: '"CRM Limited" <francesca.heathcote91@ethereal.email>', // sender address
+        from: '"CRM Limited" <youremail@gmail.com>', // sender address
         to: email, // list of receivers
         subject: 'Please verify your new user', // Subject line
         text: 'Please follow the link to very your account before you can login', // plain text body

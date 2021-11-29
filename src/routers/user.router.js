@@ -29,6 +29,7 @@ const { verify } = require('jsonwebtoken')
 const { deleteJWT } = require('../helpers/redis.helper')
 
 const verificationURL = 'http://localhost:3000/verification/'
+const loginLink = 'http://localhost:3000/'
 
 router.all('/', (req, res, next) => {
   // res.json({ message: "return form user router" });
@@ -105,7 +106,12 @@ router.post('/', newUserValidation, async (req, res) => {
       verificationLink: verificationURL + result._id + '/' + email,
     })
 
-    res.json({ status: 'success', message: 'New user created', result })
+    res.json({
+      status: 'success',
+      message:
+        'New account created, an email has been sent to you, verify your account',
+      result,
+    })
   } catch (error) {
     console.log(error)
 
@@ -219,7 +225,7 @@ router.patch('/reset-password', updatePassValidation, async (req, res) => {
   }
   res.json({
     status: 'error',
-    message: 'Unable to update your password. plz try again later',
+    message: 'Unable to update your password. please try again later',
   })
 })
 
@@ -242,7 +248,7 @@ router.delete('/logout', userAuthorization, async (req, res) => {
 
   res.json({
     status: 'error',
-    message: 'Unable to logg you out, plz try again later',
+    message: 'Unable to log you out, please try again later',
   })
 })
 
