@@ -2,6 +2,11 @@
 
 This is an api to create a CRM Ticket System with MERN
 
+## Front End Repo
+
+- [Frontend Repo](https://github.com/rOluochKe/crm-ui)
+- [App Demo](https://mern-crm-app.netlify.app/)
+
 ## API Resources
 
 ### User API Resources
